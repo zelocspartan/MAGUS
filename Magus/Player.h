@@ -3,23 +3,23 @@
 
 
 #include "olcPixelGameEngine.h"
+#include "ScreenManager.h"
 
 
 
 class Adventurer;
 
-class MagusClient : public olc::PixelGameEngine
+template <class T>
+class MagusClient : public ScreenManager <T>
 {
 public:
 	std::shared_ptr<Adventurer> adventurer;
 
-	MagusClient()
-	{
-		// Name your application
-		sAppName = "M.A.G.U.S. client";
+public:
+	MagusClient() {
+
 	}
 
-public:
 	bool OnUserCreate() override
 	{
 		// Called once at the start, so create things here

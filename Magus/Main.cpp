@@ -16,14 +16,14 @@ int main()
 		std::cin >> startupChoice;
 		if (startupChoice == "A" || startupChoice == "a")
 		{
-			MagusClient demo;
+			MagusClient<Type> demo;	// wrong type
 			if (demo.Construct(1280, 720, 1, 1))
 				demo.Start();
 			break;
 		}		
 		else if (startupChoice == "DM" || startupChoice == "dm")
 		{
-			MagusServer demo;
+			MagusServer<Type> demo;	// wrong type
 			if (demo.Construct(1280, 720, 1, 1))
 				demo.Start();
 			break;

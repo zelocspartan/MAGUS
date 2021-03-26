@@ -1,0 +1,5 @@
+﻿  Main.cpp
+C:\Users\Zeloc\Documents\GitHub\MAGUS\Magus\ScreenManager.h(113,3): error C2760: syntax error: unexpected token '}', expected 'id-expression'
+C:\Users\Zeloc\Documents\GitHub\MAGUS\Magus\ScreenManager.h(129): message : see reference to class template instantiation 'HUD<T>' being compiled
+C:\Users\Zeloc\Documents\GitHub\MAGUS\Magus\Attributes.h(77,22): warning C4244: '=': conversion from 'uint16_t' to 'uint8_t', possible loss of data
+C:\Users\Zeloc\Documents\GitHub\MAGUS\Magus\Attributes.h(96,15): warning C4244: 'return': conversion from 'double' to 'int8_t', possible loss of data
