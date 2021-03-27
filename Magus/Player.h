@@ -9,9 +9,13 @@
 
 class Adventurer;
 
-template <class T>
-class MagusClient : public ScreenManager <T>
+
+class MagusClient : public ScreenManager
 {
+	enum ClientState {
+
+	};
+
 public:
 	std::shared_ptr<Adventurer> adventurer;
 
@@ -27,13 +31,14 @@ public:
 		return true;
 	}
 
-	bool OnUserUpdate(float fElapsedTime) override
-	{
-		// Called once per frame, draws random coloured pixels
+	virtual bool SubLoop(float fElapsedTime) override {
+		// Called once per frame, shall contain only Client specific operations
 
 
 		return true;
 	}
+
+
 };
 
 

@@ -10,8 +10,8 @@
 
 
 
-enum Type {
-
+enum HUDType {
+	header
 };
 
 

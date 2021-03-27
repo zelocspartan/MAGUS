@@ -9,9 +9,13 @@
 
 class DungeonMaster;
 
-template <class T>
-class MagusServer : public ScreenManager <T>
+
+class MagusServer : public ScreenManager
 {
+	enum ServerState {
+
+	};
+
 public:
 	std::shared_ptr<DungeonMaster> DM;
 
@@ -27,13 +31,13 @@ public:
 		return true;
 	}
 
-	bool OnUserUpdate(float fElapsedTime) override
-	{
-		// Called once per frame, draws random coloured pixels
-
+	virtual bool SubLoop(float fElapsedTime) override {
+		// Called once per frame, shall contain only Server specific operations
 
 		return true;
 	}
+
+
 };
 
 
