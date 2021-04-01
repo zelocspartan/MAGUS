@@ -143,6 +143,7 @@
   <ItemGroup>
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Resources.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
   </ItemGroup>

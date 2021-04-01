@@ -27,6 +27,8 @@ public:
 	bool OnUserCreate() override
 	{
 		// Called once at the start, so create things here
+		ScreenSetup();
+
 
 		return true;
 	}
@@ -38,6 +40,7 @@ public:
 		return true;
 	}
 
+	void ScreenSetup();
 
 };
 

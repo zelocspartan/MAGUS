@@ -21,7 +21,7 @@ public:
 		tooltip
 	};
 	std::vector<olc::Sprite*> screenLayers;
-	std::list<std::shared_ptr<Scene>> scenes;
+	std::vector<std::shared_ptr<Scene>> scenes;
 
 
 public:

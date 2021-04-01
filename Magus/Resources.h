@@ -9,6 +9,11 @@
 #define HUDBRACKETHEIGHT 20
 
 
+#pragma region Player HUD constants
+#define HUD_MAINMENU_POS_SCALED  {5, 5}
+#define HUD_MAINMENU_SIZE {3, 3}
+
+#pragma endregion	//PLAYER HUD constants
 
 enum HUDType {
 	header

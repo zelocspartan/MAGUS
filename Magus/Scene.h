@@ -10,7 +10,7 @@ class HUD;
 class ScreenManager;
 
 class Scene {
-
+public:
 	bool isActive;
 	std::list<std::shared_ptr<HUD>> HUDs;
 
