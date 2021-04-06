@@ -12,7 +12,7 @@ class ScreenManager;
 class Scene {
 public:
 	bool isActive;
-	std::list<std::shared_ptr<HUD>> HUDs;
+	std::vector<std::shared_ptr<HUD>> HUDs;
 
 public:
 	bool updateScene(olc::vd2d vMouse, ScreenManager* cScreen);

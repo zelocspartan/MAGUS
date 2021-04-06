@@ -44,6 +44,7 @@ public:
 	uint16_t speed;
 
 	// Methods
+	Attributes() {};	//delete later
 	Attributes(std::string n, 
 		uint8_t STR, uint8_t DEX, uint8_t CON, uint8_t INT, uint8_t WIL, uint8_t CHA,
 		uint16_t psize = 0, uint16_t pspeed = 0, uint16_t page = 0, uint8_t l = 0,

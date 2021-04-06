@@ -14,14 +14,8 @@ class Scene;
 class ScreenManager : public olc::PixelGameEngine
 {
 public:
-	enum screenLayer {
-		background,
-		foreground,
-		hud,
-		tooltip
-	};
-	std::vector<olc::Sprite*> screenLayers;
 	std::vector<std::shared_ptr<Scene>> scenes;
+	uint8_t activeScene;
 
 
 public:

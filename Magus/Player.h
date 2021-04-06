@@ -64,13 +64,18 @@ public:
 #include <vector>
 #include <string>
 
+class BaseClass;
 
 class Adventurer
 {
 public:
+	//test var
+	std::vector<std::shared_ptr<BaseClass>> test;
+
+
 	// Variables
-	Species species;
-	AdventurerClass advClass;
+	//Species species;
+	//AdventurerClass advClass;
 	Attributes attributes;
 
 	std::vector<Skill> skills;
@@ -88,6 +93,8 @@ public:
 	uint8_t overrideAstral = 0;
 
 	// Methods
+	Adventurer() {};
+
 	void levelUp(uint8_t thrownValue) {
 		int8_t extConst = 0;
 		//ToDo calculate external constitution

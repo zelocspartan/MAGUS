@@ -1,0 +1,47 @@
+﻿  HUD.cpp
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(18,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(19,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(21,8): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(21,30): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(22,9): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(22,86): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(34,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(50,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(92,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(93,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(94,8): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(94,27): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(95,9): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(95,28): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(109,11): warning C4018: '>': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(111,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(163,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  Main.cpp
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\Attributes.h(78,22): warning C4244: '=': conversion from 'uint16_t' to 'uint8_t', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\Attributes.h(97,15): warning C4244: 'return': conversion from 'double' to 'int8_t', possible loss of data
+  Resources.cpp
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\Attributes.h(78,22): warning C4244: '=': conversion from 'uint16_t' to 'uint8_t', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\Attributes.h(97,15): warning C4244: 'return': conversion from 'double' to 'int8_t', possible loss of data
+  Scene.cpp
+  ScreenManager.cpp
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 1832 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  Magus.vcxproj -> C:\Users\zeloc\Documents\GitHub\MAGUS\x64\Release\Magus.exe

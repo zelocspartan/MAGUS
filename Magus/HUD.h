@@ -12,7 +12,14 @@
 
 
 class ScreenManager;
-class BaseClass;
+class BaseClass {
+	std::string name;
+
+
+public:
+	BaseClass(std::string n) { name = n; }
+	void DrawSelf(olc::PixelGameEngine* cScreen, olc::vu2d pos, olc::vu2d size, olc::Pixel color);
+};
 
 
 class HUDItem {
@@ -26,10 +33,10 @@ public:
 	HUDItem(int pos, HUDType t = header, std::shared_ptr<BaseClass> item = nullptr);
 	~HUDItem() {};
 
-	bool hover(olc::vd2d vMouse, ScreenManager* cScreen, int verticalOffset, int width, int bracketHeight, olc::vu2d HUDlocation);
-	void DrawBracket(ScreenManager* cScreen, int width, int bracketHeight, int verticalOffset, olc::Pixel border = olc::BLACK, olc::Pixel backround = olc::BLACK);
+	bool hover(olc::vd2d vMouse, ScreenManager* cScreen, int verticalOffset, olc::vu2d size, int bracketHeight, olc::vu2d HUDlocation);
+	void DrawBracket(ScreenManager* cScreen, olc::vu2d HUDlocation, olc::vu2d size, int bracketHeight, int verticalOffset, olc::Pixel border = olc::BLACK, olc::Pixel backround = olc::BLACK);
 	bool updateBracket(ScreenManager* cScreen, olc::vd2d vMouse, olc::vu2d HUDlocation,
-		int verticalOffset, int width, int bracketHeight);
+		int verticalOffset, olc::vu2d size, int bracketHeight);
 
 	virtual void leftClickAction(ScreenManager* cScreen) {};
 	virtual void rightClickAction(ScreenManager* cScreen) {};
@@ -40,7 +47,9 @@ public:
 class HUD
 {
 public:
-	std::vector<std::shared_ptr<HUDItem>> hudItems;
+	std::vector<std::string> hudTabs;
+	std::vector<std::vector<HUDItem>> hudItems;
+	uint8_t activeTab;
 	olc::vu2d location;
 	olc::vu2d size;
 	olc::Pixel borderColor;
@@ -52,6 +61,7 @@ public:
 	void drawHUD(ScreenManager* cScreen);
 	bool hoverHUD(olc::vd2d vMouse, ScreenManager* cScreen);
 	bool updateHUD(olc::vd2d vMouse, ScreenManager* cScreen);
+	void addItem(std::shared_ptr<BaseClass> newItem, int tab = 0);
 
 
 };

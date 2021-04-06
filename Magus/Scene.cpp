@@ -9,28 +9,28 @@ bool Scene::updateScene(olc::vd2d vMouse, ScreenManager* cScreen) {
 
 
 	// Background
-	cScreen->SetDrawTarget(cScreen->screenLayers[ScreenManager::screenLayer::background]);
-
+	cScreen->Clear(olc::BLUE);
 
 
 	// Foreground
-	cScreen->SetDrawTarget(cScreen->screenLayers[ScreenManager::screenLayer::foreground]);
 
 
 
 	// HUD
-	cScreen->SetDrawTarget(cScreen->screenLayers[ScreenManager::screenLayer::hud]);
+
+
 	for (auto& hud : HUDs) {
 		hud->updateHUD(vMouse, cScreen);
 	}
 
 
 	// Tooltip
-	cScreen->SetDrawTarget(cScreen->screenLayers[ScreenManager::screenLayer::tooltip]);
 
 
 
-	cScreen->SetDrawTarget(nullptr);
+
+
+	
 
 	return true;
 }
