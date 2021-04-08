@@ -21,6 +21,7 @@ bool HUDItem::hover(olc::vd2d vMouse, ScreenManager* cScreen, int verticalOffset
 	if (x >= HUDlocation.x && x <= (HUDlocation.x + width))
 		if (y >= (HUDlocation.y + (verticalPos + 1 - verticalOffset) * bracketHeight) && y <= (HUDlocation.y + (verticalPos + 1 - verticalOffset + 1) * bracketHeight) - 1) {
 			DrawBracket(cScreen, HUDlocation, size, bracketHeight, verticalOffset, olc::RED, olc::BLACK);
+			hoverAction(cScreen);
 			return true;
 		}
 	return false;

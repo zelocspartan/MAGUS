@@ -19,6 +19,9 @@ class BaseClass {
 public:
 	BaseClass(std::string n) { name = n; }
 	void DrawSelf(olc::PixelGameEngine* cScreen, olc::vu2d pos, olc::vu2d size, olc::Pixel color);
+	void leftClickAction(ScreenManager* cScreen) {}
+	void rightClickAction(ScreenManager* cScreen) {}
+	void hoverAction(ScreenManager* cScreen) {}
 };
 
 
@@ -38,8 +41,9 @@ public:
 	bool updateBracket(ScreenManager* cScreen, olc::vd2d vMouse, olc::vu2d HUDlocation,
 		int verticalOffset, olc::vu2d size, int bracketHeight);
 
-	virtual void leftClickAction(ScreenManager* cScreen) {};
-	virtual void rightClickAction(ScreenManager* cScreen) {};
+	virtual void leftClickAction(ScreenManager* cScreen) { Item.lock()->leftClickAction(cScreen); };
+	virtual void rightClickAction(ScreenManager* cScreen) { Item.lock()->rightClickAction(cScreen); };
+	virtual void hoverAction(ScreenManager* cScreen) { Item.lock()->hoverAction(cScreen); };
 
 };
 
