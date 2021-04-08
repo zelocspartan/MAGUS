@@ -35,7 +35,7 @@ void HUDItem::DrawBracket(ScreenManager* cScreen, olc::vu2d HUDlocation, olc::vu
 	if ((verticalPos + 1 - verticalOffset) < size.y / bracketHeight
 		&& (verticalPos - verticalOffset) >= 0) {
 		//cScreen->FillRect({ 1,(verticalPos - cScreen->verticalOffset + offset) * HUDBRACKETHEIGHT +1}, { HUDWIDTH - 3, HUDBRACKETHEIGHT - 2 }, backround);
-		cScreen->DrawRect({ x + 1, y + (verticalPos + 1 - verticalOffset) * bracketHeight + 1 }, { width - 3, bracketHeight - 2 }, border);
+		//cScreen->DrawRect({ x + 1, y + (verticalPos + 1 - verticalOffset) * bracketHeight + 1 }, { width - 3, bracketHeight - 2 }, border);
 		olc::vu2d loc = { (uint32_t)(x + 15), (uint32_t)(y + (verticalPos + 1 - verticalOffset) * bracketHeight + 5) };
 		if (!Item.expired()) {
 			Item.lock()->DrawSelf(cScreen, loc, { 0,0 }, olc::CYAN);
@@ -219,7 +219,7 @@ void HUD::addItem(std::shared_ptr<BaseClass> newItem, int tab) {
 }
 
 void HUD::updateHUDdatabase(ScreenManager* cScreen) {
-	hudItems.clear();
+	//hudItems.clear();
 	// Effectively autosize
 	size.x = 0;
 	for (auto& tab : hudTabs) {
