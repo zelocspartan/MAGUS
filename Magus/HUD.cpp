@@ -66,36 +66,77 @@ bool HUDItem::updateBracket(
 #pragma region HUD
 
 void HUD::drawHUD(ScreenManager* cScreen) {
+	// If there is nothing to draw
+	if (size.x == 0 || size.y == 0)
+		return;
+
+#pragma region HUD background draw
 	//cScreen->FillRect(location, size, bracketBackgroundColor);
 	//cScreen->DrawRect(location, size, borderColor);
-	olc::vu2d ULSIZE = HUDBRACKET_UL_SIZE;
-	olc::vu2d URSIZE = HUDBRACKET_UR_SIZE;
-	olc::vu2d UCSIZE = HUDBRACKET_UC_SIZE;
-	float temp = (size.x - ULSIZE.x - URSIZE.x) / UCSIZE.x;
+
+	// Get the actual size for the hud 
+	olc::vu2d ulSize = HUDBRACKET_UL_SIZE;
+	olc::vu2d urSize = HUDBRACKET_UR_SIZE;
+	olc::vu2d ucSize = HUDBRACKET_UC_SIZE;
+	olc::vu2d mlSize = HUDBRACKET_UC_SIZE;
+	olc::vu2d blSize = HUDBRACKET_UC_SIZE;
+	float temp = (float)(size.x - ulSize.x - urSize.x) / (float)(ucSize.x);
 	int horizontalparts = temp;
 	if (temp > horizontalparts)
 		horizontalparts++;
+	size.x = ulSize.x + urSize.x + horizontalparts * ucSize.x;
 
-	size.x = ULSIZE.x + URSIZE.x + horizontalparts * UCSIZE.x;
+	temp = (float)(size.y - ulSize.y - urSize.y) / (float)(ucSize.y);
+	int verticalparts = temp;
+	if (temp > verticalparts)
+		verticalparts++;
 
+	// Draw first row of background
 	int tempxoffset;
 	int tempyoffset = location.y;
 	cScreen->DrawPartialSprite(location, cScreen->Hudtextures, HUDBRACKET_UL_LOC, HUDBRACKET_UL_SIZE);
 	for (int t = 0; t < horizontalparts; t++)
 	{
-		tempxoffset = location.x + UCSIZE.x * t + ULSIZE.x;
+		tempxoffset = location.x + ucSize.x * t + ulSize.x;
 		cScreen->DrawPartialSprite({ tempxoffset,tempyoffset}, cScreen->Hudtextures, HUDBRACKET_UC_LOC, HUDBRACKET_UC_SIZE);
 	}
-	tempxoffset = location.x + UCSIZE.x * horizontalparts + ULSIZE.x;
+	tempxoffset = location.x + ucSize.x * horizontalparts + ulSize.x;
 	cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset}, cScreen->Hudtextures, HUDBRACKET_UR_LOC, HUDBRACKET_UR_SIZE);
 
+	// Draw middle rows
+	for (int y = 0; y < verticalparts; y++) {
+		tempyoffset = location.y + mlSize.y * y + ulSize.y;
+		tempxoffset = location.x;
+		cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_ML_LOC, HUDBRACKET_ML_SIZE);
+		for (int x = 0; x < horizontalparts; x++) {
+			tempxoffset = location.x + ucSize.x * x + mlSize.x;
+			cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_MC_LOC, HUDBRACKET_MC_SIZE);
+		}
+		tempxoffset = location.x + ucSize.x * horizontalparts + mlSize.x;
+		cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_MR_LOC, HUDBRACKET_MR_SIZE);
+	}
+
+	// Draw bottom rows
+	tempyoffset = location.y + mlSize.y * verticalparts + ulSize.y;
+	tempxoffset = location.x;
+	cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Hudtextures, HUDBRACKET_BL_LOC, HUDBRACKET_BL_SIZE);
+	for (int t = 0; t < horizontalparts; t++)
+	{
+		tempxoffset = location.x + ucSize.x * t + ulSize.x;
+		cScreen->DrawPartialSprite({ tempxoffset,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_BC_LOC, HUDBRACKET_BC_SIZE);
+	}
+	tempxoffset = location.x + ucSize.x * horizontalparts + ulSize.x;
+	cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_BR_LOC, HUDBRACKET_BR_SIZE);
+
+#pragma endregion
+
+	// Draw tabs on the hud
 	int i = 0;
 	int horizontalPos = 0;
 	int verticalPos = location.y + 1;
 	for (auto& tab : hudTabs) {
 		olc::vi2d s = cScreen->GetTextSize(tab);
-		cScreen->FillRect({ horizontalPos + 1,verticalPos }, { s.x + 4, bracketHeight }, bracketBackgroundColor);
-		cScreen->DrawString({ horizontalPos + 1,verticalPos }, tab, olc::RED);
+		cScreen->DrawString({ horizontalPos + 1,verticalPos + 3 }, tab, olc::RED);
 		if (i++ == activeTab) {
 			cScreen->DrawRect({ horizontalPos + 1,verticalPos }, { s.x + 2, bracketHeight - 2 }, olc::BLUE);
 		}
@@ -165,13 +206,6 @@ bool HUD::hoverHUD(olc::vd2d vMouse, ScreenManager* cScreen) {
 }
 
 bool HUD::updateHUD(olc::vd2d vMouse, ScreenManager* cScreen) {
-	// Effectively autosize, move to constructor
-	size.x = 0;
-	for (auto& tab : hudTabs) {
-		olc::vi2d s = cScreen->GetTextSize(tab);
-		size.x += s.x + 4;
-	}
-	hudItems.resize(hudTabs.size());	// move to constructor
 	// Other updates
 	drawHUD(cScreen);
 	return hoverHUD(vMouse, cScreen);
@@ -183,6 +217,28 @@ void HUD::addItem(std::shared_ptr<BaseClass> newItem, int tab) {
 	}
 	hudItems[tab].push_back(HUDItem(hudItems[tab].size(), header, newItem));
 }
+
+void HUD::updateHUDdatabase(ScreenManager* cScreen) {
+	hudItems.clear();
+	// Effectively autosize
+	size.x = 0;
+	for (auto& tab : hudTabs) {
+		olc::vi2d s = cScreen->GetTextSize(tab);
+		size.x += s.x + 4;
+	}
+	hudItems.resize(hudTabs.size());	
+	/*
+	for (auto& data : dataBase) {
+		auto it = data.second.lock()->begin();
+		for (it; it < data.second.lock()->end(); ++it) {
+			addItem((*it), data.first);
+		}
+	}*/
+}
+/*
+void HUD::attachDatabase(std::vector<std::shared_ptr<BaseClass>> data, uint8_t page) {
+	dataBase.insert(std::pair<uint8_t, std::vector<std::shared_ptr<BaseClass>>> (page,data));
+}*/
 
 
 #pragma endregion

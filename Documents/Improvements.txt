@@ -1,0 +1,2 @@
+HUD
+  - Create attach function into the player and DM objects, which actively reattaches database after every change.

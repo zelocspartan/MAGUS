@@ -55,9 +55,14 @@ void MagusClient::ScreenSetup() {
 	scenes[main]->HUDs[one]->addItem(adventurer->test[4]);
 	scenes[main]->HUDs[one]->addItem(adventurer->test[3], 1);
 	scenes[main]->HUDs[one]->addItem(adventurer->test[4], 1);
+	//scenes[main]->HUDs[one]->attachDatabase(adventurer->test);
 	scenes[main]->isActive = true;
 	scenes[inventory]->isActive = false;
 	scenes[map]->isActive = false;
+
+	for (auto& hud : scenes[main]->HUDs) {
+		hud->updateHUDdatabase(this);
+	}
 
 
 	

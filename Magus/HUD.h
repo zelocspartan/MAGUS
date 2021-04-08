@@ -10,6 +10,7 @@
 #include <memory>
 #include <string>
 #include <math.h>
+#include <map>
 
 
 class ScreenManager;
@@ -54,6 +55,7 @@ class HUD
 public:
 	std::vector<std::string> hudTabs;
 	std::vector<std::vector<HUDItem>> hudItems;
+	std::map<uint8_t, std::weak_ptr<std::vector<std::shared_ptr<BaseClass>>>> dataBase;
 	uint8_t activeTab;
 	olc::vu2d location;
 	olc::vu2d size;
@@ -67,6 +69,8 @@ public:
 	bool hoverHUD(olc::vd2d vMouse, ScreenManager* cScreen);
 	bool updateHUD(olc::vd2d vMouse, ScreenManager* cScreen);
 	void addItem(std::shared_ptr<BaseClass> newItem, int tab = 0);
+	void updateHUDdatabase(ScreenManager* cScreen);
+	//void attachDatabase(std::shared_ptr<std::vector<std::shared_ptr<BaseClass>>> data, uint8_t page);
 
 
 };
