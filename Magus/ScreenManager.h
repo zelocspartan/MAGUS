@@ -16,6 +16,7 @@ class ScreenManager : public olc::PixelGameEngine
 public:
 	std::vector<std::shared_ptr<Scene>> scenes;
 	uint8_t activeScene;
+	olc::Sprite* Hudtextures;
 
 
 public:

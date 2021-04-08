@@ -8,6 +8,9 @@ ScreenManager::ScreenManager()
 	// Name your application
 	sAppName = "M.A.G.U.S. client";
 
+	// Texture Setup
+
+	Hudtextures = new olc::Sprite(HUDTEXTURES);
 }
 
 // Shall be generic, only the setup and states differenciate the sub classes

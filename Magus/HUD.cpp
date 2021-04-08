@@ -66,8 +66,28 @@ bool HUDItem::updateBracket(
 #pragma region HUD
 
 void HUD::drawHUD(ScreenManager* cScreen) {
-	cScreen->FillRect(location, size, bracketBackgroundColor);
-	cScreen->DrawRect(location, size, borderColor);
+	//cScreen->FillRect(location, size, bracketBackgroundColor);
+	//cScreen->DrawRect(location, size, borderColor);
+	olc::vu2d ULSIZE = HUDBRACKET_UL_SIZE;
+	olc::vu2d URSIZE = HUDBRACKET_UR_SIZE;
+	olc::vu2d UCSIZE = HUDBRACKET_UC_SIZE;
+	float temp = (size.x - ULSIZE.x - URSIZE.x) / UCSIZE.x;
+	int horizontalparts = temp;
+	if (temp > horizontalparts)
+		horizontalparts++;
+
+	size.x = ULSIZE.x + URSIZE.x + horizontalparts * UCSIZE.x;
+
+	int tempxoffset;
+	int tempyoffset = location.y;
+	cScreen->DrawPartialSprite(location, cScreen->Hudtextures, HUDBRACKET_UL_LOC, HUDBRACKET_UL_SIZE);
+	for (int t = 0; t < horizontalparts; t++)
+	{
+		tempxoffset = location.x + UCSIZE.x * t + ULSIZE.x;
+		cScreen->DrawPartialSprite({ tempxoffset,tempyoffset}, cScreen->Hudtextures, HUDBRACKET_UC_LOC, HUDBRACKET_UC_SIZE);
+	}
+	tempxoffset = location.x + UCSIZE.x * horizontalparts + ULSIZE.x;
+	cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset}, cScreen->Hudtextures, HUDBRACKET_UR_LOC, HUDBRACKET_UR_SIZE);
 
 	int i = 0;
 	int horizontalPos = 0;

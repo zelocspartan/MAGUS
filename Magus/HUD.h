@@ -9,6 +9,7 @@
 #include <vector>
 #include <memory>
 #include <string>
+#include <math.h>
 
 
 class ScreenManager;
