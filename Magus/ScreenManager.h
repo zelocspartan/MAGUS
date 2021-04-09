@@ -17,6 +17,8 @@ public:
 	std::vector<std::shared_ptr<Scene>> scenes;
 	uint8_t activeScene;
 	olc::Sprite* Hudtextures;
+	olc::Sprite* Buttontextures;
+	olc::Sprite* BGtextures;
 
 
 public:

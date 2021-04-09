@@ -7,6 +7,7 @@
 
 
 void MagusClient::ScreenSetup() {
+	SetPixelMode(olc::Pixel::ALPHA);
 	//only test!!!
 	enum PlayerScenes {
 		main,
@@ -73,6 +74,7 @@ void MagusClient::ScreenSetup() {
 
 void MagusServer::ScreenSetup() {
 
+	SetPixelMode(olc::Pixel::ALPHA);
 
 
 

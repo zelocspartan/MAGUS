@@ -28,6 +28,8 @@ enum HUDType {
 #pragma region file locations
 
 #define HUDTEXTURES "../Resources/Sprite/Border.png"
+#define BUTTONTEXTURES "../Resources/Sprite/Button.png"
+#define BGTEXTURES "../Resorces/Sprite/Background.png"
 #define HUDBRACKET_UL_LOC {0,0}
 #define HUDBRACKET_UL_SIZE {20,20}
 #define HUDBRACKET_UC_LOC {20,0}

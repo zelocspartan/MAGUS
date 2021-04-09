@@ -11,6 +11,8 @@ ScreenManager::ScreenManager()
 	// Texture Setup
 
 	Hudtextures = new olc::Sprite(HUDTEXTURES);
+	Buttontextures = new olc::Sprite(BUTTONTEXTURES);
+	BGtextures = new olc::Sprite(BGTEXTURES);
 }
 
 // Shall be generic, only the setup and states differenciate the sub classes

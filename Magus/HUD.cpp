@@ -136,7 +136,7 @@ void HUD::drawHUD(ScreenManager* cScreen) {
 	int verticalPos = location.y + 1;
 	for (auto& tab : hudTabs) {
 		olc::vi2d s = cScreen->GetTextSize(tab);
-		cScreen->DrawString({ horizontalPos + 1,verticalPos + 3 }, tab, olc::RED);
+		cScreen->DrawString({ horizontalPos + 2,verticalPos + 8 }, tab, olc::RED);
 		if (i++ == activeTab) {
 			cScreen->DrawRect({ horizontalPos + 1,verticalPos }, { s.x + 2, bracketHeight - 2 }, olc::BLUE);
 		}
