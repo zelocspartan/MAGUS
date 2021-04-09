@@ -48,6 +48,8 @@ enum HUDType {
 #define HUDBRACKET_BC_SIZE {20,20}
 #define HUDBRACKET_BR_LOC {40,40}
 #define HUDBRACKET_BR_SIZE {20,20}
+#define HUDBORDER_WIDTH 4
+#define BUTTONBORDER_WIDTH 3
 
 #pragma endregion
 
