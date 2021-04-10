@@ -71,6 +71,7 @@ class Adventurer
 public:
 	//test var
 	std::vector<std::shared_ptr<BaseClass>> test;
+	std::vector<std::shared_ptr<BaseClass>> random;
 
 
 	// Variables

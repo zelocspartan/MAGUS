@@ -27,6 +27,10 @@ void MagusClient::ScreenSetup() {
 	adventurer->test.push_back(std::make_shared<BaseClass>(BaseClass("4")));
 	adventurer->test.push_back(std::make_shared<BaseClass>(BaseClass("5")));
 
+	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("tab one")));
+	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("tab two")));
+	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("tab three")));
+	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("tab four")));
 
 
 	scenes.push_back(std::make_shared<Scene>(Scene()));	//main
@@ -34,19 +38,13 @@ void MagusClient::ScreenSetup() {
 	scenes.push_back(std::make_shared<Scene>(Scene()));	//map
 
 
-	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD()));	//one
-	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD()));	//two
-	int i = 0;
-	for (auto& hud : scenes[main]->HUDs) {
-		hud->location.x = i * 200;
-		hud->location.y = i++ * 200 +60;
-		hud->numberOfBrackets = 4;
-	}
+	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD({200, 60})));	//one
+	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD({800, 120})));	//two
 
-	scenes[main]->HUDs[one]->hudTabs.push_back("tab one");	//one
-	scenes[main]->HUDs[one]->hudTabs.push_back("tab two");	//two
-	scenes[main]->HUDs[one]->hudTabs.push_back("tab three");	//two
-	scenes[main]->HUDs[one]->hudTabs.push_back("tab four");	//two
+	scenes[main]->HUDs[one]->addTab(adventurer->random[0]);	//one
+	scenes[main]->HUDs[one]->addTab(adventurer->random[1]);	//two
+	scenes[main]->HUDs[one]->addTab(adventurer->random[2]);	//three
+	scenes[main]->HUDs[one]->addTab(adventurer->random[3]);	//four
 
 	scenes[main]->HUDs[one]->addItem(adventurer->test[0]);
 	scenes[main]->HUDs[one]->addItem(adventurer->test[1]);
@@ -55,6 +53,21 @@ void MagusClient::ScreenSetup() {
 	scenes[main]->HUDs[one]->addItem(adventurer->test[4]);
 	scenes[main]->HUDs[one]->addItem(adventurer->test[3], 1);
 	scenes[main]->HUDs[one]->addItem(adventurer->test[4], 1);
+	
+	scenes[main]->HUDs[inventory]->addTab(adventurer->random[0]);	//one
+	scenes[main]->HUDs[inventory]->addTab(adventurer->random[1]);	//two
+	scenes[main]->HUDs[inventory]->addTab(adventurer->random[2]);	//three
+	scenes[main]->HUDs[inventory]->addTab(adventurer->random[3]);	//four
+					   
+	scenes[main]->HUDs[inventory]->addItem(adventurer->test[0]);
+	scenes[main]->HUDs[inventory]->addItem(adventurer->test[1]);
+	scenes[main]->HUDs[inventory]->addItem(adventurer->test[2]);
+	scenes[main]->HUDs[inventory]->addItem(adventurer->test[3]);
+	scenes[main]->HUDs[inventory]->addItem(adventurer->test[4]);
+	scenes[main]->HUDs[inventory]->addItem(adventurer->test[3], 1);
+	scenes[main]->HUDs[inventory]->addItem(adventurer->test[4], 1);
+
+	
 	//scenes[main]->HUDs[one]->attachDatabase(adventurer->test);
 	scenes[main]->isActive = true;
 	scenes[inventory]->isActive = false;
@@ -63,11 +76,6 @@ void MagusClient::ScreenSetup() {
 	for (auto& hud : scenes[main]->HUDs) {
 		hud->updateHUDdatabase(this);
 	}
-
-
-	
-	scenes[inventory]->HUDs.push_back(std::make_shared<HUD>(HUD()));	//one
-	scenes[inventory]->HUDs.push_back(std::make_shared<HUD>(HUD()));	//two
 }
 
 

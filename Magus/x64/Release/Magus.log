@@ -1,1 +1,9 @@
-﻿  Magus.vcxproj -> C:\Users\zeloc\Documents\GitHub\MAGUS\Release\Magus.exe
+﻿  Resources.cpp
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\Attributes.h(78,22): warning C4244: '=': conversion from 'uint16_t' to 'uint8_t', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\Attributes.h(97,15): warning C4244: 'return': conversion from 'double' to 'int8_t', possible loss of data
+  Generating code
+  2 of 1921 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    21 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Magus.vcxproj -> C:\Users\zeloc\Documents\GitHub\MAGUS\Release\Magus.exe
