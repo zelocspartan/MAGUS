@@ -1,37 +1,38 @@
 ﻿  HUD.cpp
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(18,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(20,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=double
           ]
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(19,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(21,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=double
           ]
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(21,8): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(21,30): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(22,9): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(22,86): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(35,41): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(51,41): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(84,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(90,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(154,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(23,8): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(23,30): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(24,9): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(24,108): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(37,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(52,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(138,19): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(183,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=double
           ]
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(155,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(184,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=double
           ]
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(156,8): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(156,27): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(157,9): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(157,28): warning C4018: '<=': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(171,11): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(173,26): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(218,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  Magus.vcxproj -> C:\Users\Momo\Documents\GitHub\MAGUS\Debug\Magus.exe
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(189,8): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(189,27): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(190,9): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(190,28): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(226,22): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(269,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(294,23): warning C4244: 'initializing': conversion from 'float' to 'uint16_t', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(302,10): warning C4244: '=': conversion from 'float' to 'uint16_t', possible loss of data
+C:\Users\zeloc\Documents\GitHub\MAGUS\Magus\HUD.cpp(310,10): warning C4244: '=': conversion from 'float' to 'uint16_t', possible loss of data
+  Magus.vcxproj -> C:\Users\zeloc\Documents\GitHub\MAGUS\Debug\Magus.exe

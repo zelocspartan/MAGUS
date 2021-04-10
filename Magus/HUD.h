@@ -61,7 +61,7 @@ public:
 	olc::vu2d size;
 	olc::Pixel borderColor;
 	olc::Pixel bracketBackgroundColor;
-	int bracketHeight;
+	uint8_t numberOfBrackets;
 	int verticalOffset;	// for scroller
 
 

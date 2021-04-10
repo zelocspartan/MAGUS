@@ -38,10 +38,9 @@ void MagusClient::ScreenSetup() {
 	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD()));	//two
 	int i = 0;
 	for (auto& hud : scenes[main]->HUDs) {
-		hud->bracketHeight = 20;
 		hud->location.x = i * 200;
 		hud->location.y = i++ * 200 +60;
-		hud->size = { 0, 80 };
+		hud->numberOfBrackets = 4;
 	}
 
 	scenes[main]->HUDs[one]->hudTabs.push_back("tab one");	//one
