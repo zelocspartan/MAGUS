@@ -13,10 +13,15 @@ ScreenManager::ScreenManager()
 	Hudtextures = new olc::Sprite(HUDTEXTURES);
 	Buttontextures = new olc::Sprite(BUTTONTEXTURES);
 	BGtextures = new olc::Sprite(BGTEXTURES);
+
+	Screen = new olc::Sprite(SCREENWIDTH, SCREENHIGHT);
+	Screendecal = new olc::Decal(BGtextures);
+
+	SetPixelMode(olc::Pixel::ALPHA);
 }
 
 // Shall be generic, only the setup and states differenciate the sub classes
-bool ScreenManager::OnUserUpdate(float fElapsedTime) 
+bool ScreenManager::OnUserUpdate(float fElapsedTime)
 {
 	// Called once per frame
 	olc::vd2d vMouse = { (float)GetMouseX(), (float)GetMouseY() };
@@ -24,6 +29,8 @@ bool ScreenManager::OnUserUpdate(float fElapsedTime)
 
 	scenes[activeScene]->updateScene(vMouse, this);
 
+	Screendecal->Update();
+	//DrawDecal({ 0,0 }, Screendecal);
 
 	return true;
 }

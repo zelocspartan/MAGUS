@@ -72,7 +72,9 @@ enum HUDType {
 
 #define HUDTEXTURES "../Resources/Sprite/Border.png"
 #define BUTTONTEXTURES "../Resources/Sprite/Button.png"
-#define BGTEXTURES "../Resorces/Sprite/Background.png"
+#define BGTEXTURES "../Resources/Sprite/Background.png"
+#define SCREENWIDTH 1440
+#define SCREENHIGHT 900
 
 
 #pragma endregion

@@ -3,6 +3,7 @@
 
 #include "DM.h"
 #include "Player.h"
+#include "Resources.h"
 
 #include <iostream>
 
@@ -17,14 +18,14 @@ int main()
 		if (startupChoice == "A" || startupChoice == "a")
 		{
 			MagusClient demo;	
-			if (demo.Construct(1280, 720, 1, 1))
+			if (demo.Construct(SCREENWIDTH, SCREENHIGHT, 1, 1))
 				demo.Start();
 			break;
 		}		
 		else if (startupChoice == "DM" || startupChoice == "dm")
 		{
 			MagusServer demo;	
-			if (demo.Construct(1280, 720, 1, 1))
+			if (demo.Construct(SCREENWIDTH, SCREENHIGHT, 1, 1))
 				demo.Start();
 			break;
 		}		

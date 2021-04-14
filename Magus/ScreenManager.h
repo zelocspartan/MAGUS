@@ -20,6 +20,9 @@ public:
 	olc::Sprite* Buttontextures;
 	olc::Sprite* BGtextures;
 
+	olc::Sprite* Screen;
+
+	olc::Decal* Screendecal;
 
 public:
 

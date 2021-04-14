@@ -7,9 +7,12 @@ bool Scene::updateScene(olc::vd2d vMouse, ScreenManager* cScreen) {
 	if (!isActive)
 		return false;
 
+	//cScreen->SetDrawTarget(cScreen->Screen);
 
 	// Background
-	cScreen->Clear(olc::BLUE);
+	//cScreen->Clear(olc::BLUE);
+
+	cScreen->DrawSprite({ 0,0 }, cScreen->BGtextures);
 
 
 	// Foreground
@@ -30,7 +33,7 @@ bool Scene::updateScene(olc::vd2d vMouse, ScreenManager* cScreen) {
 
 
 
-	
+	cScreen->SetDrawTarget(nullptr);
 
 	return true;
 }
