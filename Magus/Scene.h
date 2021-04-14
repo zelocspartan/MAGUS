@@ -11,7 +11,6 @@ class ScreenManager;
 
 class Scene {
 public:
-	bool isActive;
 	std::vector<std::shared_ptr<HUD>> HUDs;
 
 public:

@@ -4,8 +4,6 @@
 #include "HUD.h"
 
 bool Scene::updateScene(olc::vd2d vMouse, ScreenManager* cScreen) {
-	if (!isActive)
-		return false;
 
 	// Background
 	cScreen->DrawDecal({ 0,0 }, cScreen->BackgroundDecal);

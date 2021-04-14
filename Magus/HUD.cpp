@@ -21,10 +21,11 @@ uint8_t HUDTab::calcSize(ScreenManager* cScreen, olc::vu2d pos) {
 	// Calculate button size
 	int s = Item.lock()->getTextLength(cScreen);
 	int textWidth = s + 4 + 2 * BUTTONBORDER_WIDTH;
-	float temp = (float)(textWidth - blSize.x - brSize.x) / (float)(bcSize.x);
+	int reqCentPixel = textWidth - blSize.x - brSize.x;
+	double temp = (float)(reqCentPixel) / (float)(bcSize.x);
 	int centerParts = temp;
 	if (temp > centerParts) centerParts++;
-	if (0 > centerParts) centerParts = 0;
+	if (0 > centerParts || reqCentPixel < 0) centerParts = 0;
 
 	size.x = blSize.x + centerParts * bcSize.x + brSize.x;
 	size.y = bcSize.y;

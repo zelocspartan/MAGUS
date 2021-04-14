@@ -1,4 +1,7 @@
-﻿  Scene.cpp
+﻿  Resources.cpp
+C:\Users\kukiz\Documents\GitHub\MAGUS\Magus\Attributes.h(78,22): warning C4244: '=': conversion from 'uint16_t' to 'uint8_t', possible loss of data
+C:\Users\kukiz\Documents\GitHub\MAGUS\Magus\Attributes.h(97,15): warning C4244: 'return': conversion from 'double' to 'int8_t', possible loss of data
+  Scene.cpp
   ScreenManager.cpp
   Generating Code...
-  Magus.vcxproj -> C:\Users\zeloc\Documents\GitHub\MAGUS\Debug\Magus.exe
+  Magus.vcxproj -> C:\Users\kukiz\Documents\GitHub\MAGUS\Debug\Magus.exe
