@@ -24,22 +24,13 @@ public:
 
 	}
 
-	bool OnUserCreate() override
-	{
-		// Called once at the start, so create things here
-		ScreenSetup();
-
-
-		return true;
-	}
-
 	virtual bool SubLoop(float fElapsedTime) override {
 		// Called once per frame, shall contain only Server specific operations
 
 		return true;
 	}
 
-	void ScreenSetup();
+	void ScreenSetup() override;
 
 };
 

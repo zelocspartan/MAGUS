@@ -25,20 +25,6 @@ public:
 
 	}
 
-	bool OnUserCreate() override
-	{
-		// Called once at the start, so create things here
-		ScreenSetup();
-
-		Screen = new olc::Sprite(SCREENWIDTH, SCREENHIGHT);
-		Screendecal = new olc::Decal(Screen);
-		BackgroundDecal = new olc::Decal(BGtextures);
-		CursorDecal = new olc::Decal(Cursor);
-
-
-		return true;
-	}
-
 	virtual bool SubLoop(float fElapsedTime) override {
 		// Called once per frame, shall contain only Client specific operations
 
@@ -46,7 +32,7 @@ public:
 		return true;
 	}
 
-	void ScreenSetup();
+	void ScreenSetup() override;
 
 };
 

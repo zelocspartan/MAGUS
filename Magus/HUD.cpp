@@ -4,7 +4,7 @@
 
 void BaseClass::DrawSelf(ScreenManager* cScreen, olc::vu2d position, olc::vu2d size, olc::Pixel color) {
 	position.y += 5;
-	cScreen->DrawString(position, name, color);
+	cScreen->DrawStringDecal(position, name, color);
 }
 
 #pragma region HUDTab
@@ -43,18 +43,19 @@ bool HUDTab::TabHover(ScreenManager* cScreen, olc::vd2d vMouse) {
 			olc::vu2d bcSize = BUTTON_CENTER_SIZE;
 			olc::vu2d brSize = BUTTON_RIGHT_SIZE;
 			int centerParts = (size.x - blSize.x - brSize.x) / (bcSize.x);
+			olc::vf2d templocation;
 
-			int tempxoffset;
-			int tempyoffset = location.y;
+			templocation.x = location.x;
+			templocation.y = location.y;
 			// Draw button
-			cScreen->DrawPartialSprite(location, cScreen->Buttontextures, BUTTON_HOVER_LEFT_LOC, BUTTON_HOVER_LEFT_SIZE);
+			cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_HOVER_LEFT_LOC, BUTTON_HOVER_LEFT_SIZE);
 			for (int t = 0; t < centerParts; t++)
 			{
-				tempxoffset = location.x + t * bcSize.x + blSize.x;
-				cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Buttontextures, BUTTON_HOVER_CENTER_LOC, BUTTON_HOVER_CENTER_SIZE);
+				templocation.x = location.x + t * bcSize.x + blSize.x;
+				cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_HOVER_CENTER_LOC, BUTTON_HOVER_CENTER_SIZE);
 			}
-			tempxoffset = location.x + centerParts * bcSize.x + blSize.x;
-			cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Buttontextures, BUTTON_HOVER_RIGHT_LOC, BUTTON_HOVER_RIGHT_SIZE);
+			templocation.x = location.x + centerParts * bcSize.x + blSize.x;
+			cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_HOVER_RIGHT_LOC, BUTTON_HOVER_RIGHT_SIZE);
 
 			Item.lock()->hoverAction(cScreen);
 
@@ -71,19 +72,22 @@ void HUDTab::DrawSelf(ScreenManager* cScreen, bool activeTab, olc::Pixel color) 
 	olc::vu2d bcSize = BUTTON_CENTER_SIZE;
 	olc::vu2d brSize = BUTTON_RIGHT_SIZE;
 	int centerParts = (size.x - blSize.x - brSize.x) / (bcSize.x);
-	int tempxoffset;
-	int tempyoffset = location.y;
+	olc::vf2d templocation;
 	int i = 0;
+	templocation.x = location.x;
+	templocation.y = location.y;
+	
 
 	// Draw button
-	cScreen->DrawPartialSprite(location, cScreen->Buttontextures, BUTTON_LEFT_LOC, BUTTON_LEFT_SIZE);
+	cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_LEFT_LOC, BUTTON_LEFT_SIZE);
 	for (int t = 0; t < centerParts; t++)
 	{
-		tempxoffset = location.x + t * bcSize.x + blSize.x;
-		cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Buttontextures, BUTTON_CENTER_LOC, BUTTON_CENTER_SIZE);
+		templocation.x = location.x + t * bcSize.x + blSize.x;
+		cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_CENTER_LOC, BUTTON_CENTER_SIZE);
+
 	}
-	tempxoffset = location.x + centerParts * bcSize.x + blSize.x;
-	cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Buttontextures, BUTTON_RIGHT_LOC, BUTTON_RIGHT_SIZE);
+	templocation.x = location.x + centerParts * bcSize.x + blSize.x;
+	cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_RIGHT_LOC, BUTTON_RIGHT_SIZE);
 
 	// Draw string
 	olc::vu2d pos = { location.x + stringOffset, location.y };
@@ -91,14 +95,15 @@ void HUDTab::DrawSelf(ScreenManager* cScreen, bool activeTab, olc::Pixel color) 
 
 	// Draw active border
 	if (activeTab) {
-		cScreen->DrawPartialSprite(location, cScreen->Buttontextures, BUTTON_ACTIVE_LEFT_LOC, BUTTON_ACTIVE_LEFT_SIZE);
+		templocation = location;
+		cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_ACTIVE_LEFT_LOC, BUTTON_ACTIVE_LEFT_SIZE);
 		for (int t = 0; t < centerParts; t++)
 		{
-			tempxoffset = location.x + t * bcSize.x + blSize.x;
-			cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Buttontextures, BUTTON_ACTIVE_CENTER_LOC, BUTTON_ACTIVE_CENTER_SIZE);
+			templocation.x = location.x + t * bcSize.x + blSize.x;
+			cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_ACTIVE_CENTER_LOC, BUTTON_ACTIVE_CENTER_SIZE);
 		}
-		tempxoffset = location.x + centerParts * bcSize.x + blSize.x;
-		cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Buttontextures, BUTTON_ACTIVE_RIGHT_LOC, BUTTON_ACTIVE_RIGHT_SIZE);
+		templocation.x = location.x + centerParts * bcSize.x + blSize.x;
+		cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_ACTIVE_RIGHT_LOC, BUTTON_ACTIVE_RIGHT_SIZE);
 	}
 
 }
@@ -121,25 +126,26 @@ bool HUDItem::hover(olc::vd2d vMouse, ScreenManager* cScreen, int verticalOffset
 	uint32_t width = size.x;
 	if (x >= HUDlocation.x && x <= (HUDlocation.x + width))
 		if (y >= (HUDlocation.y + (verticalPos + 1 - verticalOffset) * bracketHeight + 6 + HUDBORDER_WIDTH) && y <= (HUDlocation.y + (verticalPos + 1 - verticalOffset + 1) * bracketHeight) - 1 + 6 + HUDBORDER_WIDTH) {
-			//DrawBracket(cScreen, HUDlocation, size, bracketHeight, verticalOffset, olc::RED, olc::BLACK);
 			olc::vu2d location = { (uint32_t)(HUDlocation.x + HUDBORDER_WIDTH), (uint32_t)(HUDlocation.y + (verticalPos + 1 - verticalOffset) * bracketHeight + HUDBORDER_WIDTH + 6) };
 
 			olc::vu2d blSize = BUTTON_LEFT_SIZE;
 			olc::vu2d bcSize = BUTTON_CENTER_SIZE;
 			olc::vu2d brSize = BUTTON_RIGHT_SIZE;
 			int centerParts = (size.x - blSize.x - brSize.x - 2 * HUDBORDER_WIDTH) / (bcSize.x);
+			olc::vf2d templocation;
 
-			int tempxoffset = location.x + horizontalOffset;
-			int tempyoffset = location.y;
+			templocation.x = location.x + horizontalOffset;
+			templocation.y = location.y;
+
 			// Draw button
-			cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Buttontextures, BUTTON_HOVER_LEFT_LOC, BUTTON_HOVER_LEFT_SIZE);
+			cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_HOVER_LEFT_LOC, BUTTON_HOVER_LEFT_SIZE);
 			for (int t = 0; t < centerParts; t++)
 			{
-				tempxoffset = location.x + t * bcSize.x + blSize.x + horizontalOffset;
-				cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Buttontextures, BUTTON_HOVER_CENTER_LOC, BUTTON_HOVER_CENTER_SIZE);
+				templocation.x = location.x + t * bcSize.x + blSize.x + horizontalOffset;
+				cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_HOVER_CENTER_LOC, BUTTON_HOVER_CENTER_SIZE);
 			}
-			tempxoffset = location.x + centerParts * bcSize.x + blSize.x + horizontalOffset;
-			cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Buttontextures, BUTTON_HOVER_RIGHT_LOC, BUTTON_HOVER_RIGHT_SIZE);
+			templocation.x = location.x + centerParts * bcSize.x + blSize.x + horizontalOffset;
+			cScreen->DrawPartialDecal(templocation, cScreen->ButtontexturesDecal, BUTTON_HOVER_RIGHT_LOC, BUTTON_HOVER_RIGHT_SIZE);
 
 			hoverAction(cScreen);
 			return true;
@@ -210,45 +216,46 @@ void HUD::drawHUD(ScreenManager* cScreen) {
 	olc::vu2d hblSize = HUDBRACKET_UC_SIZE;
 	int horizontalparts = (size.x - hulSize.x - hurSize.x) / (hucSize.x);
 	int verticalparts = (size.y - hulSize.y - hurSize.y) / (hucSize.y);
-	int tempxoffset;
-	int tempyoffset;
+	olc::vf2d templocation;
+
+	templocation.x = location.x;
+	templocation.y = location.y;
 
 #pragma region HUD background draw
 	// Draw first row of background
-	tempyoffset = location.y;
-	cScreen->DrawPartialSprite(location, cScreen->Hudtextures, HUDBRACKET_UL_LOC, HUDBRACKET_UL_SIZE);
+	cScreen->DrawPartialDecal(templocation, cScreen->HudtexturesDecal, HUDBRACKET_UL_LOC, HUDBRACKET_UL_SIZE);
 	for (int t = 0; t < horizontalparts; t++)
 	{
-		tempxoffset = location.x + hucSize.x * t + hulSize.x;
-		cScreen->DrawPartialSprite({ tempxoffset,tempyoffset}, cScreen->Hudtextures, HUDBRACKET_UC_LOC, HUDBRACKET_UC_SIZE);
+		templocation.x = location.x + hucSize.x * t + hulSize.x;
+		cScreen->DrawPartialDecal(templocation, cScreen->HudtexturesDecal, HUDBRACKET_UC_LOC, HUDBRACKET_UC_SIZE);
 	}
-	tempxoffset = location.x + hucSize.x * horizontalparts + hulSize.x;
-	cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset}, cScreen->Hudtextures, HUDBRACKET_UR_LOC, HUDBRACKET_UR_SIZE);
+	templocation.x = location.x + hucSize.x * horizontalparts + hulSize.x;
+	cScreen->DrawPartialDecal(templocation, cScreen->HudtexturesDecal, HUDBRACKET_UR_LOC, HUDBRACKET_UR_SIZE);
 
 	// Draw middle rows
 	for (int y = 0; y < verticalparts; y++) {
-		tempyoffset = location.y + hmlSize.y * y + hulSize.y;
-		tempxoffset = location.x;
-		cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_ML_LOC, HUDBRACKET_ML_SIZE);
+		templocation.y = location.y + hmlSize.y * y + hulSize.y;
+		templocation.x = location.x;
+		cScreen->DrawPartialDecal(templocation, cScreen->HudtexturesDecal, HUDBRACKET_ML_LOC, HUDBRACKET_ML_SIZE);
 		for (int x = 0; x < horizontalparts; x++) {
-			tempxoffset = location.x + hucSize.x * x + hmlSize.x;
-			cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_MC_LOC, HUDBRACKET_MC_SIZE);
+			templocation.x = location.x + hucSize.x * x + hmlSize.x;
+			cScreen->DrawPartialDecal(templocation, cScreen->HudtexturesDecal, HUDBRACKET_MC_LOC, HUDBRACKET_MC_SIZE);
 		}
-		tempxoffset = location.x + hucSize.x * horizontalparts + hmlSize.x;
-		cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_MR_LOC, HUDBRACKET_MR_SIZE);
+		templocation.x = location.x + hucSize.x * horizontalparts + hmlSize.x;
+		cScreen->DrawPartialDecal(templocation, cScreen->HudtexturesDecal, HUDBRACKET_MR_LOC, HUDBRACKET_MR_SIZE);
 	}
 
 	// Draw bottom rows
-	tempyoffset = location.y + hmlSize.y * verticalparts + hulSize.y;
-	tempxoffset = location.x;
-	cScreen->DrawPartialSprite({ tempxoffset, tempyoffset }, cScreen->Hudtextures, HUDBRACKET_BL_LOC, HUDBRACKET_BL_SIZE);
+	templocation.y = location.y + hmlSize.y * verticalparts + hulSize.y;
+	templocation.x = location.x;
+	cScreen->DrawPartialDecal(templocation, cScreen->HudtexturesDecal, HUDBRACKET_BL_LOC, HUDBRACKET_BL_SIZE);
 	for (int t = 0; t < horizontalparts; t++)
 	{
-		tempxoffset = location.x + hucSize.x * t + hulSize.x;
-		cScreen->DrawPartialSprite({ tempxoffset,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_BC_LOC, HUDBRACKET_BC_SIZE);
+		templocation.x = location.x + hucSize.x * t + hulSize.x;
+		cScreen->DrawPartialDecal(templocation, cScreen->HudtexturesDecal, HUDBRACKET_BC_LOC, HUDBRACKET_BC_SIZE);
 	}
-	tempxoffset = location.x + hucSize.x * horizontalparts + hulSize.x;
-	cScreen->DrawPartialSprite({ tempxoffset ,tempyoffset }, cScreen->Hudtextures, HUDBRACKET_BR_LOC, HUDBRACKET_BR_SIZE);
+	templocation.x = location.x + hucSize.x * horizontalparts + hulSize.x;
+	cScreen->DrawPartialDecal(templocation, cScreen->HudtexturesDecal, HUDBRACKET_BR_LOC, HUDBRACKET_BR_SIZE);
 
 #pragma endregion
 

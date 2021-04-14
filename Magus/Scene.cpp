@@ -7,20 +7,15 @@ bool Scene::updateScene(olc::vd2d vMouse, ScreenManager* cScreen) {
 	if (!isActive)
 		return false;
 
-	cScreen->SetDrawTarget(cScreen->Screen);
-
 	// Background
-	cScreen->Clear(olc::BLANK);
+	cScreen->DrawDecal({ 0,0 }, cScreen->BackgroundDecal);
 
-	//cScreen->DrawSprite({ 0,0 }, cScreen->BGtextures);
 
 
 	// Foreground
 
 
-
 	// HUD
-
 
 	for (auto& hud : HUDs) {
 		hud->updateHUD(vMouse, cScreen);
@@ -32,8 +27,6 @@ bool Scene::updateScene(olc::vd2d vMouse, ScreenManager* cScreen) {
 
 
 
-
-	cScreen->SetDrawTarget(nullptr);
 
 	return true;
 }
