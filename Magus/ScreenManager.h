@@ -19,10 +19,13 @@ public:
 	olc::Sprite* Hudtextures;
 	olc::Sprite* Buttontextures;
 	olc::Sprite* BGtextures;
+	olc::Sprite* Cursor;
 
 	olc::Sprite* Screen;
 
 	olc::Decal* Screendecal;
+	olc::Decal* BackgroundDecal;
+	olc::Decal* CursorDecal;
 
 public:
 

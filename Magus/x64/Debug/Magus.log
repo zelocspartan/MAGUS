@@ -1,2 +1,52 @@
-﻿  ScreenManager.cpp
+﻿  HUD.cpp
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(25,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(119,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(120,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(122,8): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(122,30): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(123,9): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(123,108): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(155,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(170,41): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(277,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(278,8): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=double
+          ]
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(281,8): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(281,27): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(282,9): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(282,28): warning C4018: '<=': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(339,71): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(370,19): warning C4018: '>': signed/unsigned mismatch
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(373,10): warning C4244: '=': conversion from 'float' to 'uint16_t', possible loss of data
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\HUD.cpp(392,10): warning C4244: '=': conversion from 'float' to 'uint16_t', possible loss of data
+  Main.cpp
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\Attributes.h(78,22): warning C4244: '=': conversion from 'uint16_t' to 'uint8_t', possible loss of data
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\Attributes.h(97,15): warning C4244: 'return': conversion from 'double' to 'int8_t', possible loss of data
+  Resources.cpp
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\Attributes.h(78,22): warning C4244: '=': conversion from 'uint16_t' to 'uint8_t', possible loss of data
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\Attributes.h(97,15): warning C4244: 'return': conversion from 'double' to 'int8_t', possible loss of data
+  Scene.cpp
+  ScreenManager.cpp
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\ScreenManager.cpp(39,64): warning C4305: 'argument': truncation from 'double' to 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\Momo\Documents\GitHub\MAGUS\Magus\ScreenManager.cpp(39,64): warning C4305: 'argument': truncation from 'double' to 'const float'
+  Generating Code...
   Magus.vcxproj -> C:\Users\Momo\Documents\GitHub\MAGUS\Debug\Magus.exe

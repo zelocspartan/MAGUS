@@ -4,6 +4,7 @@
 
 #include "olcPixelGameEngine.h"
 #include "ScreenManager.h"
+#include "Resources.h"
 
 
 
@@ -28,6 +29,11 @@ public:
 	{
 		// Called once at the start, so create things here
 		ScreenSetup();
+
+		Screen = new olc::Sprite(SCREENWIDTH, SCREENHIGHT);
+		Screendecal = new olc::Decal(Screen);
+		BackgroundDecal = new olc::Decal(BGtextures);
+		CursorDecal = new olc::Decal(Cursor);
 
 
 		return true;
