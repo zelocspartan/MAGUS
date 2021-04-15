@@ -1,3 +1,26 @@
+#ifndef DM_H
+#define DM_H
+
+#include "Player.h"
+
+#include <vector>
+#include <memory>
+
+
+class DungeonMaster
+{
+public:
+	std::vector<std::shared_ptr<Adventurer>> adventurers;
+
+
+
+};
+
+
+#endif	// DM_H
+
+
+
 #ifndef SERVER_H
 #define SERVER_H
 
@@ -31,6 +54,7 @@ public:
 	}
 
 	void ScreenSetup() override;
+	void AttachDatabase() override;
 
 };
 
@@ -40,23 +64,3 @@ public:
 
 
 
-#ifndef DM_H
-#define DM_H
-
-#include "Player.h"
-
-#include <vector>
-#include <memory>
-
-
-class DungeonMaster
-{
-public:
-	std::vector<std::shared_ptr<Adventurer>> adventurers;
-
-
-
-};
-
-
-#endif	// DM_H

@@ -93,8 +93,8 @@ public:
 	void addItem(std::shared_ptr<BaseClass> newItem, int tab = 0);
 	void addTab(std::shared_ptr<BaseClass> newTab);
 	void updateHUDdatabase(ScreenManager* cScreen);
-	//void attachDatabase(std::shared_ptr<std::vector<std::shared_ptr<BaseClass>>> data, uint8_t page);
-
+	void clearHUDDatabase();
+	void resizeHUDDatabase();
 
 };
 

@@ -1,48 +1,3 @@
-#ifndef CLIENT_H
-#define CLIENT_H
-
-
-#include "olcPixelGameEngine.h"
-#include "ScreenManager.h"
-#include "Resources.h"
-
-
-
-class Adventurer;
-
-
-class MagusClient : public ScreenManager
-{
-	enum ClientState {
-
-	};
-
-public:
-	std::shared_ptr<Adventurer> adventurer;
-
-public:
-	MagusClient() {
-
-	}
-
-	virtual bool SubLoop(float fElapsedTime) override {
-		// Called once per frame, shall contain only Client specific operations
-
-
-		return true;
-	}
-
-	void ScreenSetup() override;
-
-};
-
-
-
-
-#endif	//CLIENT_H
-
-
-
 #ifndef PLAYER_H
 #define PLAYER_H
 
@@ -55,6 +10,7 @@ public:
 
 #include <vector>
 #include <string>
+#include <memory>
 
 class BaseClass;
 
@@ -63,7 +19,6 @@ class Adventurer
 public:
 	//test var
 	std::vector<std::shared_ptr<BaseClass>> test;
-	std::vector<std::shared_ptr<BaseClass>> random;
 
 
 	// Variables
@@ -77,7 +32,7 @@ public:
 
 	// Current state
 	uint16_t currentHealthPoints;
-	uint16_t currentPainPoints;	
+	uint16_t currentPainPoints;
 	uint32_t currentManaPoints;
 
 	// Override variables
@@ -95,7 +50,7 @@ public:
 		levelUpManaPoint();
 		updateAttributes();
 	}
-	
+
 	void levelUpManaPoint() {
 		//ToDo
 	}
@@ -112,7 +67,7 @@ public:
 		int8_t extChar = 0;
 		int8_t extConst = 0;
 		// ToDo
-	
+
 		calcSecondaryAttributes(extToughMod, extQuickMod, extConscMod);
 		calcHP(extConst);
 		attributes.calcDefenses(overridePhysical, overrideMental, overrideAstral, extWillPow, extChar);
@@ -133,3 +88,67 @@ public:
 
 
 #endif	// PLAYER_H
+
+
+#ifndef CLIENT_H
+#define CLIENT_H
+
+
+#include "olcPixelGameEngine.h"
+#include "ScreenManager.h"
+#include "Resources.h"
+
+
+class MagusClient : public ScreenManager
+{
+	enum ClientState {
+
+	};
+
+	std::shared_ptr<Adventurer> adventurer;
+
+public:
+	MagusClient() {
+		adventurer = std::make_shared<Adventurer>(Adventurer());
+
+	}
+
+	virtual bool SubLoop(float fElapsedTime) override {
+		// Called once per frame, shall contain only Client specific operations
+
+
+		return true;
+	}
+
+	void ScreenSetup() override;
+	void AttachDatabase() override;
+
+
+
+
+
+	// Enums for screen layout
+	enum PlayerScenes {
+		main,
+		inventory,
+		fight,
+	};
+	enum PlayerHuds {
+		qualification,
+		Strength,
+		Dexterity,
+		Constitution,
+		Inteligence,
+		Willpower,
+		Charisma,
+	};
+
+};
+
+
+
+
+#endif	//CLIENT_H
+
+
+

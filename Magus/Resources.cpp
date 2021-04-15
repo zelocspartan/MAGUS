@@ -5,47 +5,37 @@
 #include "Scene.h"
 #include "HUD.h"
 
+#pragma region Player Screen Setup
 
 void MagusClient::ScreenSetup() {
-	//only test!!!
-	enum PlayerScenes {
-		main,
-		inventory,
-		fight,
-	};
-	enum PlayerHuds {
-		qualification,
-		Strength,
-		Dexterity,
-		Constitution,
-		Inteligence,
-		Willpower,
-		Charisma,
-	};
+	// Enums moved to player.h
 
-
-	adventurer = std::make_shared<Adventurer>(Adventurer());
+	// this part is only for testing
 	adventurer->test.push_back(std::make_shared<BaseClass>(BaseClass("eszleles     +7")));
 	adventurer->test.push_back(std::make_shared<BaseClass>(BaseClass("meregkeveres +5")));
 	adventurer->test.push_back(std::make_shared<BaseClass>(BaseClass("rejtozes     +4")));
 	adventurer->test.push_back(std::make_shared<BaseClass>(BaseClass("gyogyitas    +2")));
 	adventurer->test.push_back(std::make_shared<BaseClass>(BaseClass("futas        +7")));
 	adventurer->test.push_back(std::make_shared<BaseClass>(BaseClass("13/+2")));
+	// end of test part
 
-	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("Kepzettség")));
-	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("Str")));
-	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("Dex")));
-	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("Con")));
-	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("Int")));
-	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("Wil")));
-	adventurer->random.push_back(std::make_shared<BaseClass>(BaseClass("Cha")));
+	// Adding header texts
+	StringHudButtons.push_back(std::make_shared<BaseClass>(BaseClass("Kepzettség")));
+	StringHudButtons.push_back(std::make_shared<BaseClass>(BaseClass("Str")));
+	StringHudButtons.push_back(std::make_shared<BaseClass>(BaseClass("Dex")));
+	StringHudButtons.push_back(std::make_shared<BaseClass>(BaseClass("Con")));
+	StringHudButtons.push_back(std::make_shared<BaseClass>(BaseClass("Int")));
+	StringHudButtons.push_back(std::make_shared<BaseClass>(BaseClass("Wil")));
+	StringHudButtons.push_back(std::make_shared<BaseClass>(BaseClass("Cha")));
+	// End of header texts
 
-
+	// Adding Scenes
 	scenes.push_back(std::make_shared<Scene>(Scene()));	//main
 	scenes.push_back(std::make_shared<Scene>(Scene()));	//inventory
 	scenes.push_back(std::make_shared<Scene>(Scene()));	//map
+	// End of Scenes
 
-
+	// Adding HUDs
 	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD({30, 70},30/*képzetségek száma*/,160)));	//qualification
 	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD({30, 0},1)));//strength
 	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD({95, 0},1)));//dex
@@ -53,61 +43,98 @@ void MagusClient::ScreenSetup() {
 	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD({230, 0},1)));//int
 	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD({295, 0},1)));//wil
 	scenes[main]->HUDs.push_back(std::make_shared<HUD>(HUD({360, 0},1)));//cha
-	
-#pragma region 
-	scenes[main]->HUDs[qualification]->addTab(adventurer->random[0]);
+	// End of HUDs
 
-	scenes[main]->HUDs[qualification]->addItem(adventurer->test[0]);
-	scenes[main]->HUDs[qualification]->addItem(adventurer->test[1]);
-	scenes[main]->HUDs[qualification]->addItem(adventurer->test[2]);
-	scenes[main]->HUDs[qualification]->addItem(adventurer->test[3]);
-	scenes[main]->HUDs[qualification]->addItem(adventurer->test[4]);
-	scenes[main]->HUDs[qualification]->addItem(adventurer->test[3]);
-	scenes[main]->HUDs[qualification]->addItem(adventurer->test[4]);
-#pragma endregion képzetségek
-#pragma region 
-	scenes[main]->HUDs[Strength]->addTab(adventurer->random[1]);
-	scenes[main]->HUDs[Dexterity]->addTab(adventurer->random[2]);
-	scenes[main]->HUDs[Constitution]->addTab(adventurer->random[3]);
-	scenes[main]->HUDs[Inteligence]->addTab(adventurer->random[4]);
-	scenes[main]->HUDs[Willpower]->addTab(adventurer->random[5]);
-	scenes[main]->HUDs[Charisma]->addTab(adventurer->random[6]);
+	// This function is attaching tabs and items to HUDs
+	AttachDatabase();
+}
 
-	scenes[main]->HUDs[Strength]->addItem(adventurer->test[5]);
-	scenes[main]->HUDs[Dexterity]->addItem(adventurer->test[5]);
-	scenes[main]->HUDs[Constitution]->addItem(adventurer->test[5]);
-	scenes[main]->HUDs[Inteligence]->addItem(adventurer->test[5]);
-	scenes[main]->HUDs[Willpower]->addItem(adventurer->test[5]);
-	scenes[main]->HUDs[Charisma]->addItem(adventurer->test[5]);
-#pragma endregion Main Stat
-	/*
-	scenes[main]->HUDs[inventory]->addTab(adventurer->random[1]);	//one
-	scenes[main]->HUDs[inventory]->addTab(adventurer->random[1]);	//two
-	scenes[main]->HUDs[inventory]->addTab(adventurer->random[2]);	//three
-	scenes[main]->HUDs[inventory]->addTab(adventurer->random[3]);	//four
-					   
-	scenes[main]->HUDs[inventory]->addItem(adventurer->test[0]);
-	scenes[main]->HUDs[inventory]->addItem(adventurer->test[1]);
-	scenes[main]->HUDs[inventory]->addItem(adventurer->test[2]);
-	scenes[main]->HUDs[inventory]->addItem(adventurer->test[3]);
-	scenes[main]->HUDs[inventory]->addItem(adventurer->test[4]);
-	scenes[main]->HUDs[inventory]->addItem(adventurer->test[3], 1);
-	scenes[main]->HUDs[inventory]->addItem(adventurer->test[4], 1);
+void MagusClient::AttachDatabase() {
+	for (auto& scene : scenes) {
+		for (auto& hud : scene->HUDs) {
+			hud->clearHUDDatabase();
+		}
+	}
 
-	*/
-	//scenes[main]->HUDs[one]->attachDatabase(adventurer->test);
+	// Put tab attaches here
 
-	for (auto& hud : scenes[main]->HUDs) {
-		hud->updateHUDdatabase(this);
+	Attach(scenes[main]->HUDs[qualification], StringHudButtons[0]);
+	Attach(scenes[main]->HUDs[Strength], StringHudButtons[1]);
+	Attach(scenes[main]->HUDs[Dexterity], StringHudButtons[2]);
+	Attach(scenes[main]->HUDs[Constitution], StringHudButtons[3]);
+	Attach(scenes[main]->HUDs[Inteligence], StringHudButtons[4]);
+	Attach(scenes[main]->HUDs[Willpower], StringHudButtons[5]);
+	Attach(scenes[main]->HUDs[Charisma], StringHudButtons[6]);
+
+
+
+	// End of tab attaches
+
+	for (auto& scene : scenes) {
+		for (auto& hud : scene->HUDs) {
+			hud->resizeHUDDatabase();
+		}
+	}
+
+	// Put item attaches here
+
+	Attach(scenes[0]->HUDs[0], adventurer->test, 0);
+
+
+
+	// End of item attaches
+
+	for (auto& scene : scenes) {
+		for (auto& hud : scene->HUDs) {
+			hud->updateHUDdatabase(this);
+		}
 	}
 }
 
+#pragma endregion
+
+#pragma region DM Screen Setup
 
 void MagusServer::ScreenSetup() {
 
-	SetPixelMode(olc::Pixel::ALPHA);
 
 
 
-
+	AttachDatabase();
 }
+
+void MagusServer::AttachDatabase() {
+	for (auto& scene : scenes) {
+		for (auto& hud : scene->HUDs) {
+			hud->clearHUDDatabase();
+		}
+	}
+
+	// Put tab attaches here
+
+
+
+
+	// End of tab attaches
+
+	for (auto& scene : scenes) {
+		for (auto& hud : scene->HUDs) {
+			hud->resizeHUDDatabase();
+		}
+	}
+
+	// Put item attaches here
+
+
+
+
+	// End of item attaches
+
+	for (auto& scene : scenes) {
+		for (auto& hud : scene->HUDs) {
+			hud->updateHUDdatabase(this);
+		}
+	}
+}
+
+#pragma endregion

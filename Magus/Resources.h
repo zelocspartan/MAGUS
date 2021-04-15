@@ -13,6 +13,8 @@
 #pragma endregion
 
 #pragma region HUD constants
+#define SCREENWIDTH 1440
+#define SCREENHIGHT 900
 
 #define HUDBRACKETHEIGHT 20
 #define HUDBRACKET_UL_LOC {0,0}
@@ -74,8 +76,7 @@ enum HUDType {
 #define BUTTONTEXTURES "../Resources/Sprite/Button.png"
 #define BGTEXTURES "../Resources/Sprite/Background.png"
 #define CURSORTEXTURE "../Resources/Sprite/Culsor.png"
-#define SCREENWIDTH 1440
-#define SCREENHIGHT 900
+
 
 
 #pragma endregion

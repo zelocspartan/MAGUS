@@ -47,5 +47,14 @@ bool ScreenManager::OnUserUpdate(float fElapsedTime)
 	return true;
 }
 
+void ScreenManager::Attach(std::weak_ptr<HUD> targetHud, std::shared_ptr<BaseClass> tabItem) {
+	targetHud.lock()->addTab(tabItem);
+}
+
+void ScreenManager::Attach(std::weak_ptr<HUD> targetHud, std::vector<std::shared_ptr<BaseClass>> table, int tabNumber) {
+	for (auto& item : table) {
+		targetHud.lock()->addItem(item, tabNumber);
+	}
+}
 
 

@@ -120,7 +120,6 @@ HUDItem::HUDItem(int pos, HUDType t, std::shared_ptr<BaseClass> item) {
 	type = t;
 	verticalPos = pos;
 }
-
 bool HUDItem::hover(olc::vd2d vMouse, ScreenManager* cScreen, int verticalOffset, int horizontalOffset, olc::vu2d size, int bracketHeight, olc::vu2d HUDlocation) {
 	int x = vMouse.x;
 	int y = vMouse.y;
@@ -153,7 +152,6 @@ bool HUDItem::hover(olc::vd2d vMouse, ScreenManager* cScreen, int verticalOffset
 		}
 	return false;
 }
-
 void HUDItem::DrawBracket(ScreenManager* cScreen, olc::vu2d HUDlocation, olc::vu2d size, int bracketHeight, int verticalOffset, int horizontalOffset) {
 	// Dont care about offscreen stuff
 	int width = size.x;
@@ -168,7 +166,6 @@ void HUDItem::DrawBracket(ScreenManager* cScreen, olc::vu2d HUDlocation, olc::vu
 		}
 	}
 }
-
 bool HUDItem::updateBracket(
 	ScreenManager* cScreen, olc::vd2d vMouse, olc::vu2d HUDlocation, 
 	int verticalOffset, int horizontalOffset, olc::vu2d size, int bracketHeight
@@ -203,7 +200,6 @@ HUD::HUD(olc::vu2d loc, uint8_t numOfBrack, int minimalW) {
 	size = { 0,0 };
 	activeTab = 0;
 }
-
 void HUD::drawHUD(ScreenManager* cScreen) {
 	// If there is nothing to draw
 	if (size.x == 0 || size.y == 0)
@@ -280,7 +276,6 @@ void HUD::drawHUD(ScreenManager* cScreen) {
 		}
 	}
 }
-
 bool HUD::hoverHUD(olc::vd2d vMouse, ScreenManager* cScreen) {
 	int x = vMouse.x;
 	int y = vMouse.y;
@@ -333,20 +328,17 @@ bool HUD::hoverHUD(olc::vd2d vMouse, ScreenManager* cScreen) {
 		}
 	return false;
 }
-
 bool HUD::updateHUD(olc::vd2d vMouse, ScreenManager* cScreen) {
 	// Other updates
 	drawHUD(cScreen);
 	return hoverHUD(vMouse, cScreen);
 }
-
 void HUD::addItem(std::shared_ptr<BaseClass> newItem, int tab) {
 	if (tab >= hudItems.size()) {
 		hudItems.resize(tab + 1);
 	}
 	hudItems[tab].push_back(HUDItem(hudItems[tab].size(), header, newItem));
 }
-
 void HUD::updateHUDdatabase(ScreenManager* cScreen) {
 	if (numberOfBrackets == 0 || hudTabs.size() == 0)
 		return;
@@ -401,27 +393,15 @@ void HUD::updateHUDdatabase(ScreenManager* cScreen) {
 	if (ftemp > utemp)
 		utemp++;
 	size.y = hulSize.y + hmlSize.y * utemp + hblSize.y;		// Get the actual required height of the hud block
-
-	// Resetup database
-	//hudItems.clear();
-	hudItems.resize(hudTabs.size());	
-	/*
-	for (auto& data : dataBase) {
-		auto it = data.second.lock()->begin();
-		for (it; it < data.second.lock()->end(); ++it) {
-			addItem((*it), data.first);
-		}
-	}*/
 }
-
 void HUD::addTab(std::shared_ptr<BaseClass> newTab) {
 	hudTabs.push_back(HUDTab(newTab));
 }
-
-/*
-void HUD::attachDatabase(std::vector<std::shared_ptr<BaseClass>> data, uint8_t page) {
-	dataBase.insert(std::pair<uint8_t, std::vector<std::shared_ptr<BaseClass>>> (page,data));
-}*/
+void HUD::clearHUDDatabase() {
+	hudTabs.clear();
+	hudItems.clear();
+}
+void HUD::resizeHUDDatabase() { hudItems.resize(hudTabs.size()); }
 
 
 #pragma endregion
